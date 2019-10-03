@@ -1,31 +1,60 @@
-# Glenda Bot
-Glenda is the 9fans friendly neighborhood rabbit. 
+# Star Bot
 
-Glenda was made using the [Dis**go**rd](https://github.com/bwmarrin/disgord) 
-template of the [DiscordGo](https://github.com/bwmarrin/discordgo) 
-library.
+Star bot provides a star-board service on a per-guild basis.
+
+A server can configure their channels to be monitored (by default: all) and which channel is used as the starboard. 
+
+A message will be copied and re-posted into the starboard channel when the number of reactions for the registered reaction emoji reaches the tolerance for posting (by default: 10). 
+
+Any number of emoji to channel mappings can be created per guild. 
+
+By default the bot can only be controlled by the guild owner. 
+
+Star bot does not require elevated privileges, but must be able to read the contents of channels to count star reactions. 
+
+Star bot does not retroactively delete messages posted if the original message drops below the required count for a channel. 
 
 ### Dependencies
 
 * Go
-* Lookman functionality relies on [plan9port](https://github.com/9fans/plan9port) and a mirror of the 9front manuals/source
-
-### Installing
-
-```
-go get github.com/bwmarrin/discordgo
-go get github.com/SlyMarbo/rss
-```
 
 ### Usage
+
 ```
-cd $GOPATH/src/bitbucket.org/henesy/glenda
+cd $GOPATH/src/github/henesy/starbot
 go build
-./glenda -t 'Bot BOT_AUTH_TOKEN'
+./starbot -t 'Bot BOT_AUTH_TOKEN'
 ```
+### Commands
 
-## Documentation
+Register a channel named `#starboard` and the reaction emoji `:star:` as the starboard:
 
-Glenda Bot invite: https://discordapp.com/oauth2/authorize?client_id=406483821144571915&scope=bot
+	s~register #starboard :star: 
 
+De-register a channel named `#starboard` from counting a `:star:` reaction emoji:
 
+	s~deregister #starboard :star:
+
+Set the count for an emoji `:star:` in a channel `#starboard` to require `2` reactions:
+
+	s~count #starboard :star: 2
+
+Configure the backlog scanning to be count-based for `1000` messages:
+
+	s~backlog count 1000
+
+Configure the backlog scanning to be time-based for `2 days`:
+
+	s~backlog time 2d
+
+Register someone named `henesy` to be able to control the bot in the guild:
+
+	s~admin add @henesy
+
+Remove someone named `henesy` from being able to control the bot in the guild:
+
+	s~admin remove @henesy
+
+### Documentation
+
+Star Bot invite: 
