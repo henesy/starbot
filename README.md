@@ -35,6 +35,14 @@ De-register a channel named `#starboard` from counting a `:star:` reaction emoji
 
 	s~deregister #starboard :star:
 
+Set a channel to passively scan in the guild (rather than the default of all):
+
+	s~scan #art
+
+Set all channels to be scanned (if able to be read):
+
+	s~scan all
+
 Set the count for an emoji `:star:` in a channel `#starboard` to require `2` reactions:
 
 	s~count #starboard :star: 2
@@ -55,7 +63,7 @@ Remove someone named `henesy` from being able to control the bot in the guild:
 
 	s~admin remove @henesy
 
-Show current registrations configuration states:
+Show current registrations configuration states and scanned channels (if not all):
 
 	s~list
 
