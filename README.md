@@ -55,6 +55,10 @@ Remove someone named `henesy` from being able to control the bot in the guild:
 
 	s~admin remove @henesy
 
+Show current registrations configuration states:
+
+	s~list
+
 ### Documentation
 
 Star Bot invite: 
